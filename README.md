@@ -1,2 +1,2 @@
-# university_library
-Contain programs that fullfill university library's request
+# osuLibrary
+This repo contain all coding project from osu university library.
