@@ -1,3 +1,4 @@
+import sys
 import urllib.request
 import csv
 from bs4 import BeautifulSoup
@@ -15,7 +16,6 @@ categoryList = ["Title", "Permanent link", "Alternative title", "Resource Type",
 "Preservation level", "Preservation level rationale", "Preservation level date assigned"]
 liTagList = ["attribute attribute-handle", "attribute attribute-alternative_title",
 "attribute attribute-resource_type", "attribute attribute-creator", "attribute attribute-contributor", "attribute attribute-work_type", "attribute attribute-language", "attribute attribute-publisher", "attribute attribute-date_created", "attribute attribute-date_issued", "attribute attribute-date_copyrighted", "attribute attribute-abstract", "attribute attribute-description", "attribute attribute-staff_notes", "attribute attribute-format", "attribute attribute-extent", "attribute attribute-measurement", "attribute attribute-based_near_label", "attribute attribute-collection_name", "attribute attribute-sub_collection", "attribute attribute-source", "attribute attribute-provenance", "attribute attribute-related_finding_aid", "attribute attribute-related_url", "attribute attribute-identifier", "attribute attribute-call_number", "attribute attribute-collection_identifier", "attribute attribute-archival_context", "attribute attribute-bibliographic_citation", "class='attribute attribute-subject", "attribute attribute-keyword", "attribute attribute-spatial", "attribute attribute-temporal", "attribute attribute-material", "attribute attribute-rights_statement", "attribute attribute-rights_note", "attribute attribute-rights_holder", "attribute attribute-license", "attribute attribute-access_rights", "attribute attribute-preservation_level", "attribute attribute-preservation_level_rationale", "attribute attribute-preservation_level_date_assigned"]
-# TODO  implement a file-read function that read <li> tag in, eliminate the need of a fixed list
 
 # open csv file and read handler link, store in a list
 # @param    csvName
@@ -27,7 +27,7 @@ def readCSV(csvName):
     inFile = open(csvName, 'r')
     csvReader = csv.reader(inFile, delimiter=',')
     for row in csvReader:
-        urlList.append(row[1])
+        urlList.append(row[0])
     # del the column name read for first line
     urlList.pop(0)
     return urlList
@@ -78,15 +78,20 @@ def main():
     # iterator to show program progress
     i = 1
     # get inputfile
-    print("Please enter csv file name: ")
+    print("Please enter csv file name. The file must in the same folder with your main.py program: ")
     fileIn = input()
     # write csv
     print("Please enter output file name: ")
     fileOut = input()
+    try:
+        itemURL = readCSV(fileIn)
+    except:
+        print("Fail to open this file. Press enter to exit.")
+        key = input()
+        sys.exit()
     outFile = open(fileOut, 'w', encoding="utf-8", newline='')
     csvWriter = csv.writer(outFile)
     csvWriter.writerow(categoryList)
-    itemURL = readCSV(fileIn)
     for urlLink in itemURL:
         html = urllib.request.urlopen(urlLink)
         # load target digital collection in html parser
@@ -101,6 +106,10 @@ def main():
         i = i + 1
     # write into csv
     outFile.close()
+    print("The program is finished. The output file is: ", fileOut, " . It is located in the same folder with your main.py program. Press enter to exit.")
+    key = input()
+    sys.exit()
     
 if __name__ == "__main__":
     main()
+
