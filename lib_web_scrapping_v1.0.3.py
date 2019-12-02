@@ -6,7 +6,7 @@ from bs4 import BeautifulSoup
 # Contain all category name a collection probably has in DC.
 # Add/Delete keywords in the list to create new .csv w/ more/less category. Don't forget to delete corresponding liTag!
 # Follow the format when change this list.
-categoryList = ["Title", "Handler link", "Alternative title", "Resource Type", "Creator", "Contributor", "Genre", "Language",
+categoryList = ["Title", "internal id link", "Alternative title", "Resource Type", "Creator", "Contributor", "Genre", "Language",
 "Publisher", "Date created", "Date issued", "Date copyrighted", "Summary",
 "Description", "Staff notes", "Format", "Extent", "Measurements", "Repository",
 "Collection", "Sub collection", "Source", "Provenance", "Related finding aid",
