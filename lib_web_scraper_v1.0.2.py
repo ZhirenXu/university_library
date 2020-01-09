@@ -102,7 +102,7 @@ def main():
         # reset categoryValue for next collection
         categoryValue = []
         i = i + 1
-    # write into csv
+    #write into csv
     outFile.close()
     print("The program is finished. The output file is: ", fileOut, " . It is located in the same folder with your main.py program. Press enter to exit.")
     key = input()
