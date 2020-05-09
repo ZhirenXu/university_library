@@ -1,5 +1,5 @@
 # university_library  
-### This repo contain all latest version ofcoding project from osu university library.  
+### This repo contain all latest version of coding project from osu university library.  
 
 ### Each project's repo addresses are listed below:  
 
