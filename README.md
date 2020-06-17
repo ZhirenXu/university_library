@@ -16,3 +16,5 @@
    LOC Subject Name Scraper: https://github.com/ZhirenXu/LibraryOfCongress-Subject-Name-Scrapper  
     
    File Mover: https://github.com/ZhirenXu/File-Mover
+
+   LOC Subject/Name Search: https://github.com/ZhirenXu/LibraryOfCongress-Subject-Name-Scrapper#libraryofcongress-subject-name-scrapper
